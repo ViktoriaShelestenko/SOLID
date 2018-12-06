@@ -1,3 +1,5 @@
+// RIGHT
+
 let mysqlQuery = "";
 
 class Transaction {
@@ -14,18 +16,24 @@ class Transaction {
     };
 }
 
+class Request extends Transaction {
+    repeat = function() {
+        mysqlQuery = this.rollback() + this.start();
+    };
+}
+
 function UserController(user) {
-    const transaction = new Transaction();
-    return transaction.start()
+    const request = new Request();
+    return request.start()
         .then(() => {
-            service.addUser(user);
+            Service.addUser(user, request.repeat());
         })
         .then((res) => {
-            transaction.commit();
+            request.commit();
             return res;
         })
         .catch((err) => {
-            transaction.rollback();
+            request.rollback();
             return {
                 success: false,
                 err: {
@@ -38,3 +46,22 @@ function UserController(user) {
             Promise.resolve(res);
         })
 }
+
+// WRONG
+class Transaction {
+    start = function() {
+        mysqlQuery += "START TRANSACTION;"
+    };
+
+    commit = function() {
+        mysqlQuery += "COMMIT;"
+    };
+
+    rollback = function() {
+        mysqlQuery += "ROLLBACK;"
+    };
+
+    repeat = function() {
+        mysqlQuery = this.rollback() + this.start();
+    };
+};

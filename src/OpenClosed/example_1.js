@@ -1,3 +1,5 @@
+// RIGHT
+
 class UserList extends React.Component {
     static propTypes = {
         userList: PropTypes.array.isRequired,
@@ -28,7 +30,22 @@ const checkErrors = Class => {
     return class extends Class { // my new class extends UserList
         componentWillReceiveProps(prevProps, nextProps) {
             if (prevProps.error !== nextProps.error && nextProps.error) {
-                console.error("Something was failed", nextProps.error.message)
+                console.error("Something was failed", nextProps.error.message);
+            }
+        }
+    }
+};
+
+// WRONG
+
+const checkErrors = Class => {
+    return class extends Class { // my new class extends UserList
+        componentWillReceiveProps(prevProps, nextProps) {
+            if (prevProps.error !== nextProps.error && nextProps.error) {
+                console.error("Something was failed", nextProps.error.message);
+            }
+            if (!nextProps.userList.length) {
+                console.error("User list is empty");
             }
         }
     }
