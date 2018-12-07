@@ -3,11 +3,19 @@
 class UserList extends React.Component {
     static propTypes = {
         userList: PropTypes.array.isRequired,
+        page: PropTypes.number,
         error: PropTypes.object
     }
 
     componentDidMount() { // react lifecycle is also Open-Closed principle. We use it but don`t modify
         this.props.loadUserList();
+    }
+
+    componentWillReceiveProps(prevProps, nextProps) {
+        super.componentWillReceiveProps(prevProps, nextProps);
+        if (prevProps.page === nextProps.page) {
+            console.log("It is maximum page");
+        }
     }
 
     render() {
