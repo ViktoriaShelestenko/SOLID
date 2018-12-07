@@ -13,6 +13,13 @@
     <p>React lifecycles appropriate to Open-Closed Principle the same as decorators. (example_1)</p>
     <p>Transaction classes appropriate to Open-Closed Principle. (example_2)</p>
     <h3>- The Liskov Substitution Principle</h3>
+    <p>subtype that extends the basic class cannot be basic class of another subtype</p>
+    <p>Input Controller exists. It is basic type for searchPanl, DropdownWithSearch and Textarea.
+        But SearchPanel cannot be basic for DropDown And Textarea (example_1)</p>
+    <p>AuthHandler exists. It is basic type for GoogleAuth, FacebookAuth and TwitterAuth.
+        But GoogleAuth cannot be basic for FacebookAuth And TwitterAuth (auth_ex)</p>
+    <p>Request exists. It is basic type for User and Topics.
+        But User cannot be basic for Topics (requests)</p>
     <h3>- The Interface Segregation Principle</h3>
     <h3>- The Dependency Inversion Principle</h3>
     <script src="src/SingleResponsibility/inheritance_es6.js"></script>

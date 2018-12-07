@@ -23,11 +23,11 @@ class UserList extends React.Component {
         if (!userList.length) {
             return;
         }
-        return {
+        return (
             <div>
                 {userList.map(user => <span>user.name</span>)}
             </div>
-        }
+        )
     }
 }
 }
