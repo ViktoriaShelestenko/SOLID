@@ -21,7 +21,14 @@
     <p>Request exists. It is basic type for User and Topics.
         But User cannot be basic for Topics (requests)</p>
     <h3>- The Interface Segregation Principle</h3>
+    <p>If not every subtype can implemnents methods from abstract class, abstract class mustn`t consist it</p>
+    <p>xbox abstract class exist. It has getKinect method. But not every type of xbox has kinect, so we compelling
+        to create stumbs.</p>
+    <p>authAbstract suppose to have some properties. But if we realize ownAuth method, the properties isn`t match with
+        abstract method. So abstract method need to create right props in advance</p>
     <h3>- The Dependency Inversion Principle</h3>
+    <p>High-level modelu should not depend on details of another module. And vice versa. They should depend ob abstraction</p>
+    <p>Send message class has message method inside. Message can be created with link. And when parse link, we should ensure that every type of link are accepted</p>
     <script src="src/SingleResponsibility/inheritance_es6.js"></script>
     <script src="src/SingleResponsibility/composition_es6.js"></script>
 </body>
